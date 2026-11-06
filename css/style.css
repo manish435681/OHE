@@ -5,9 +5,9 @@
 @font-face{font-family:"Plex";font-weight:700;src:url(../assets/fonts/ibm-plex-sans-latin-700-normal.woff2)}
 :root{--ink:#0e1c2f;--navy:#0e2a47;--blue:#1565c0;--mute:#5a6779;--line:#d6dce4;--bg:#fff;--panel:#f4f6f9;--red:#c0392b;--redl:#fdeceb;--grn:#1b7f4b;--grnl:#e8f5ee;--amb:#b26a00;--ambl:#fff4de}
 *{box-sizing:border-box;margin:0;padding:0}
-html{font-size:min(1.25vw,2.25vh)}
+html{font-size:clamp(14px,min(1.25vw,2.25vh),20px)}
 html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:"Plex","Segoe UI",Arial,sans-serif}
-.slide{position:fixed;inset:0;display:none;background:var(--bg)}
+.slide{position:fixed;inset:0;display:none;overflow-y:auto;overscroll-behavior:contain;background:var(--bg)}
 .slide.active{display:flex}
 .slide.active main>*,.slide.active aside>*{animation:in .45s both}
 @keyframes in{from{opacity:0;transform:translateY(.6rem)}to{opacity:1;transform:none}}
@@ -48,3 +48,57 @@ tr:nth-child(even) td{background:var(--panel)}
 .full .tag{font-size:1.1rem}.full .ltr{font-size:7rem;font-weight:700;color:#4f9bf0;line-height:1}
 .split{flex:1;display:flex}.split .pic{flex:0 0 38%;background-size:cover;background-position:center}
 .sign td{height:3.2rem}
+.cursor-halo{position:fixed;top:0;left:0;z-index:9999;width:2rem;height:2rem;border:2px solid rgba(21,101,192,.7);border-radius:50%;background:rgba(21,101,192,.08);box-shadow:0 0 0 .35rem rgba(21,101,192,.12);pointer-events:none;opacity:0;transform:translate(-50%,-50%);transition:opacity .18s ease,left .08s ease-out,top .08s ease-out}
+.cursor-halo.visible{opacity:1}
+.cursor-halo.pressed{background:rgba(21,101,192,.2);transform:translate(-50%,-50%) scale(.82)}
+@media(min-width:761px) and (max-width:1024px){
+html{font-size:clamp(15px,min(1.45vw,2.1vh),18px)}
+aside{padding:2.5rem 1.75rem}
+main{padding:2.5rem 2rem}
+.imgs{flex-wrap:wrap}
+.imgs img{max-width:100%;height:34vh;object-fit:contain}
+.g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+html{font-size:16px}
+.slide.active{flex-direction:column;justify-content:flex-start;align-items:stretch;min-height:100vh;min-height:100dvh}
+aside{flex:0 0 auto;padding:1.25rem 1.25rem 1rem;gap:.55rem}
+aside h2{font-size:1.6rem}
+aside p{font-size:.95rem}
+main{flex:0 0 auto;width:100%;padding:1.25rem;gap:.85rem;justify-content:flex-start}
+p,li,td,th{font-size:1rem}
+.g2,.g3{grid-template-columns:1fr}
+.grid{gap:.65rem}
+.box,.item{padding:1rem}
+.item{gap:1rem}
+.item .n{font-size:1.8rem;min-width:2rem}
+.item p{font-size:1rem}
+.imgs{flex-direction:column;align-items:stretch}
+.imgs .fig{width:100%}
+.imgs img{width:100%;height:auto;max-height:42vh;object-fit:contain}
+.fig{max-width:100%;overflow:hidden}
+.fig svg,.fig img{max-height:55vh}
+table{table-layout:fixed}
+th,td{overflow-wrap:anywhere;padding:.65rem .55rem}
+td:first-child{width:auto}
+.sign td{height:auto}
+.split{flex-direction:column;flex:0 0 auto}
+.split .pic{flex:0 0 auto;min-height:28vh;background-position:center}
+.split main{padding:1.5rem!important;gap:.85rem!important}
+.split main h1{font-size:clamp(2rem,8vw,3rem)!important}
+.split main p{font-size:1rem!important}
+.split .tag{font-size:.8rem!important}
+.full{flex:1 0 auto;min-height:100vh;min-height:100dvh;padding:2rem 1.25rem}
+.full h1{font-size:clamp(2.4rem,10vw,3.8rem)}
+.full .ltr{font-size:4rem}
+.cursor-halo{display:none}
+}
+@media(max-height:500px) and (min-width:761px){
+html{font-size:clamp(14px,1.8vh,18px)}
+aside{padding:1rem}
+main{padding:1rem}
+}
+@media(prefers-reduced-motion:reduce){
+.slide.active main>*,.slide.active aside>*{animation:none}
+.cursor-halo{transition:opacity .01ms}
+}

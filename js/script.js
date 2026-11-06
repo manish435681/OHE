@@ -1,5 +1,16 @@
 (function(){
 var s=[].slice.call(document.querySelectorAll('.slide')),i=0,sx=null;
+var halo=document.createElement('div');
+halo.className='cursor-halo';
+halo.setAttribute('aria-hidden','true');
+document.body.appendChild(halo);
+var supportsHalo=window.matchMedia&&window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+if(supportsHalo){
+ document.addEventListener('pointermove',function(e){if(e.pointerType==='touch')return;halo.style.left=e.clientX+'px';halo.style.top=e.clientY+'px';halo.classList.add('visible')});
+ document.addEventListener('pointerleave',function(){halo.classList.remove('visible')});
+ document.addEventListener('pointerdown',function(){halo.classList.add('pressed')});
+ document.addEventListener('pointerup',function(){halo.classList.remove('pressed')});
+}
 function R(x,y,w,h,f,r){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+f+'" rx="'+(r||0)+'"/>'}
 function T(x,y,t,c,a,sz){return '<text x="'+x+'" y="'+y+'" fill="'+(c||'#0e1c2f')+'" text-anchor="'+(a||'start')+'" font-size="'+(sz||15)+'" font-weight="600">'+t+'</text>'}
 function fig(st){
