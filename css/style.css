@@ -1,0 +1,50 @@
+
+@font-face{font-family:"Plex";font-weight:400;src:url(../assets/fonts/ibm-plex-sans-latin-400-normal.woff2)}
+@font-face{font-family:"Plex";font-weight:500;src:url(../assets/fonts/ibm-plex-sans-latin-500-normal.woff2)}
+@font-face{font-family:"Plex";font-weight:600;src:url(../assets/fonts/ibm-plex-sans-latin-600-normal.woff2)}
+@font-face{font-family:"Plex";font-weight:700;src:url(../assets/fonts/ibm-plex-sans-latin-700-normal.woff2)}
+:root{--ink:#0e1c2f;--navy:#0e2a47;--blue:#1565c0;--mute:#5a6779;--line:#d6dce4;--bg:#fff;--panel:#f4f6f9;--red:#c0392b;--redl:#fdeceb;--grn:#1b7f4b;--grnl:#e8f5ee;--amb:#b26a00;--ambl:#fff4de}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:min(1.25vw,2.25vh)}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:"Plex","Segoe UI",Arial,sans-serif}
+.slide{position:fixed;inset:0;display:none;background:var(--bg)}
+.slide.active{display:flex}
+.slide.active main>*,.slide.active aside>*{animation:in .45s both}
+@keyframes in{from{opacity:0;transform:translateY(.6rem)}to{opacity:1;transform:none}}
+aside{flex:0 0 31%;background:var(--navy);color:#fff;padding:4rem 3rem;display:flex;flex-direction:column;justify-content:center;gap:1.2rem}
+.tag{font-size:.95rem;letter-spacing:.16em;text-transform:uppercase;color:#8fb8e8;font-weight:600}
+aside h2{font-size:2.6rem;font-weight:600;line-height:1.15}
+aside p{font-size:1.2rem;line-height:1.5;color:#c3d3e6}
+.bar{width:3rem;height:.25rem;background:#4f9bf0}
+aside.do .bar{background:#4cc38a}aside.dont .bar{background:#ef7b6e}
+main{flex:1;padding:3.5rem 4.5rem;display:flex;flex-direction:column;justify-content:center;gap:1.1rem;min-width:0}
+p,li,td,th{font-size:1.25rem;line-height:1.5}
+h3{font-size:1.35rem;font-weight:600;margin-bottom:.3rem}
+.box{border:1.5px solid var(--line);background:#fff;border-radius:.6rem;padding:1.2rem 1.5rem}
+.box.p{background:var(--panel);border-color:var(--panel)}
+.box p{color:var(--mute);font-size:1.15rem}
+.item{display:flex;gap:1.6rem;align-items:flex-start;border:1.5px solid var(--line);border-left:.5rem solid var(--blue);border-radius:.6rem;padding:1.3rem 1.6rem;background:#fff}
+.item.do{border-left-color:var(--grn);background:var(--grnl);border-color:#bfe3cf;border-left-color:var(--grn)}
+.item.dont{border-left-color:var(--red);background:var(--redl);border-color:#f3c5c0;border-left-color:var(--red)}
+.item .n{font-size:2.4rem;font-weight:700;line-height:1;min-width:2.6rem;color:var(--blue)}
+.do .n{color:var(--grn)}.dont .n{color:var(--red)}
+.item h3{font-size:1.4rem}.item p{font-size:1.3rem;line-height:1.5;color:#2c3a4d}
+table{width:100%;border-collapse:separate;border-spacing:0;border:1.5px solid var(--line);border-radius:.6rem;overflow:hidden}
+th{background:var(--navy);color:#fff;text-align:left;padding:.8rem 1.2rem;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+td{padding:.85rem 1.2rem;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:600;width:30%}
+tr:nth-child(even) td{background:var(--panel)}
+.grid{display:grid;gap:1rem}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.big{font-size:3.4rem;font-weight:700;color:var(--blue);line-height:1}
+.fig{border:1.5px solid var(--line);border-radius:.6rem;padding:.8rem;background:#fff}
+.fig svg{width:100%;height:auto;display:block;max-height:50vh}
+.fig img{max-width:100%;max-height:50vh;display:block;margin:0 auto;border-radius:.3rem}
+.cap{font-size:.95rem;color:var(--mute);margin-top:.5rem;text-align:center}
+.imgs{display:flex;gap:1rem;justify-content:center}.imgs .fig{flex:0 1 auto}.imgs img{height:46vh;width:auto}
+.note{border-left:.4rem solid var(--blue);background:#eaf2fc;padding:1rem 1.4rem;border-radius:.3rem;font-size:1.2rem}
+.warn{border-left:.4rem solid var(--red);background:var(--redl);padding:1rem 1.4rem;border-radius:.3rem;font-size:1.2rem;font-weight:500}
+.full{flex-direction:column;justify-content:center;padding:5rem 7rem;gap:1.4rem;background:var(--navy);color:#fff}
+.full h1{font-size:4.2rem;font-weight:700;line-height:1.1}.full p{font-size:1.5rem;color:#c3d3e6}
+.full .tag{font-size:1.1rem}.full .ltr{font-size:7rem;font-weight:700;color:#4f9bf0;line-height:1}
+.split{flex:1;display:flex}.split .pic{flex:0 0 38%;background-size:cover;background-position:center}
+.sign td{height:3.2rem}
